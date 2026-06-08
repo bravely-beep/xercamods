@@ -2,7 +2,7 @@ import com.github.spotbugs.snom.Confidence
 import com.github.spotbugs.snom.Effort
 
 plugins {
-    id 'fabric-loom' version '1.6-SNAPSHOT'
+    id 'fabric-loom' version '1.8-SNAPSHOT'
     id 'maven-publish'
     id("com.github.spotbugs") version "6.4.4"
     id("net.ltgt.errorprone") version "4.3.0"
@@ -21,6 +21,11 @@ repositories {
     maven {
         name = 'ParchmentMC'
         url = 'https://maven.parchmentmc.org'
+    }
+    maven {
+        // JEI
+        name = "Jared's maven"
+        url = 'https://maven.blamejared.com/'
     }
     // Add repositories to retrieve artifacts from in here.
     // You should only use this when depending on other mods because
@@ -47,6 +52,10 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // JEI: compile against the API only, but pull in the full mod at runtime so the integration can be tested.
+    modCompileOnlyApi "mezz.jei:jei-${project.minecraft_version}-fabric-api:${project.jei_version}"
+    modRuntimeOnly "mezz.jei:jei-${project.minecraft_version}-fabric:${project.jei_version}"
 
     // Error Prone
     errorprone("com.google.errorprone:error_prone_core:2.43.0")

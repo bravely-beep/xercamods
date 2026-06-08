@@ -17,6 +17,9 @@
     ],
     "main": [
       "xerca.xercapaint.Mod"
+    ],
+    "jei_mod_plugin": [
+      "xerca.xercapaint.compat.jei.XercaPaintJeiPlugin"
     ]
   },
   "mixins": [
@@ -27,5 +30,8 @@
     "fabricloader": "*",
     "fabric-api": "*",
     "minecraft": "1.21.1"
+  },
+  "suggests": {
+    "jei": "*"
   }
 }
